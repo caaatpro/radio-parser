@@ -24,8 +24,6 @@ db.connect(function(err) {
   console.log("Connected!");
 });
 
-
-
 var driver = new webdriver.Builder()
   .forBrowser('firefox')
   .build();
@@ -33,13 +31,6 @@ var driver = new webdriver.Builder()
 driver.get('http://djmixfm.ru/radio/eurohit/');
 
 var lastSong = '';
-
-// driver.takeScreenshot().then(function(data) {
-//   var base64Data = data.replace(/^data:image\/png;base64,/, "")
-//   fs.writeFile("out.png", base64Data, 'base64', function(err) {
-//     if (err) console.log(err);
-//   });
-// });
 
 driver.then(function() {
   setInterval(function() {
@@ -63,7 +54,7 @@ driver.then(function() {
       lastSong = data.singer+data.song;
 
       var date = new Date();
-      var play_date = date.getFullYear()+'-'+zero(date.getMonth())+'-'+zero(date.getDate());
+      var play_date = date.getFullYear()+'-'+zero(date.getMonth()+1)+'-'+zero(date.getDate());
       var play_time = zero(date.getHours())+':'+zero(date.getMinutes());
       var start_song = Math.round(+new Date() / 1000);
       var cover = '';
