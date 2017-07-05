@@ -1,0 +1,12 @@
+[Unit]
+Description=Parser eurohits
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/vhosts/149005.simplecloud.club/dmf/eurohits
+User=root
+ExecStart=/usr/bin/xvfb-run --server-args "-screen 0 1024x720x24" /usr/bin/node /var/www/vhosts/149005.simplecloud.club/dmf/eurohits/euro.js
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
